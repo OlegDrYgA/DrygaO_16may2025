@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+    "name": "Altaivita Cart API - Corrected",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Добавление товара",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded; charset=UTF-8"
+          },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest"
+          },
+          {
+            "key": "Cookie",
+            "value": "PHPSESSID={{phpsessid}}; CID={{cid}}; _userGUID={{user_guid}}"
+          },
+          {
+            "key": "Referer",
+            "value": "https://altaivita.ru/category/chajnye-sbory/"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "product_id",
+              "value": "{{product_id}}"
+            },
+            {
+              "key": "quantity",
+              "value": "1"
+            },
+            {
+              "key": "page-url",
+              "value": "https://altaivita.ru/category/chajnye-sbory/"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://altaivita.ru/engine/cart/add_products_to_cart_from_preview.php",
+          "protocol": "https",
+          "host": ["altaivita", "ru"],
+          "path": ["engine", "cart", "add_products_to_cart_from_preview.php"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Проверка корзины",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "PHPSESSID={{phpsessid}}"
+          }
+        ],
+        "url": {
+          "raw": "https://altaivita.ru/engine/cart/ajax_show_cart_preview.php?LANG_key=ru&S_wh=1",
+          "protocol": "https",
+          "host": ["altaivita", "ru"],
+          "path": ["engine", "cart", "ajax_show_cart_preview.php"],
+          "query": [
+            {
+              "key": "LANG_key",
+              "value": "ru"
+            },
+            {
+              "key": "S_wh",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Удаление товара",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded; charset=UTF-8"
+          },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest"
+          },
+          {
+            "key": "Cookie",
+            "value": "PHPSESSID={{phpsessid}}"
+          },
+          {
+            "key": "Referer",
+            "value": "https://altaivita.ru/category/chajnye-sbory/"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "product_id",
+              "value": "{{product_id}}"
+            },
+            {
+              "key": "page-url",
+              "value": "https://altaivita.ru/category/chajnye-sbory/"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://altaivita.ru/engine/cart/delete_products_from_cart_preview.php",
+          "protocol": "https",
+          "host": ["altaivita", "ru"],
+          "path": ["engine", "cart", "delete_products_from_cart_preview.php"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "phpsessid",
+      "value": "your_session_id_here",
+      "description": "Актуальный PHPSESSID из cookies"
+    },
+    {
+      "key": "cid",
+      "value": "your_client_id_here",
+      "description": "Актуальный CID из cookies"
+    },
+    {
+      "key": "user_guid",
+      "value": "your_user_guid_here",
+      "description": "Актуальный _userGUID из cookies"
+    },
+    {
+      "key": "product_id",
+      "value": "16301392",
+      "description": "ID тестируемого товара"
+    }
+  ]
+}
